@@ -403,7 +403,7 @@ tr:hover td{background:rgba(255,255,255,.02)}
       <div class="fg"><label>Prénom *</label><input type="text" id="tFirst" placeholder="Jean"></div>
       <div class="fg"><label>Nom *</label><input type="text" id="tLast" placeholder="Guillaume"></div>
     </div>
-    <div class="fg"><label>Poste</label><input type="text" id="tRole" placeholder="ex: Technicien fibre"></div>
+    <div class="fg"><label>Poste</label><select id="tRole"><option value="Technicien D3">Technicien D3</option><option value="Technicien ADSL">Technicien ADSL</option><option value="Technicien D2">Technicien D2</option></select></div>
     <div class="modal-actions">
       <button class="btn btn-ghost" id="btnCancelTech">Annuler</button>
       <button class="btn btn-accent" id="btnSaveTech">Enregistrer</button>
@@ -893,9 +893,10 @@ function openTechModal(id) {
     const t = techs.find(t=>t.id===id);
     document.getElementById('tFirst').value = t.first||'';
     document.getElementById('tLast').value = t.last||'';
-    document.getElementById('tRole').value = t.role||'';
+    document.getElementById('tRole').value = t.role||'Technicien D3';
   } else {
-    ['tFirst','tLast','tRole'].forEach(x=>document.getElementById(x).value='');
+    ['tFirst','tLast'].forEach(x=>document.getElementById(x).value='');
+    document.getElementById('tRole').value = 'Technicien D3';
   }
   document.getElementById('mTech').classList.add('open');
 }
